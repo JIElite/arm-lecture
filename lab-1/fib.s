@@ -16,7 +16,6 @@ fibonacci:
 	@ R4 = R0 - 0 (update flags)
 	@ if(R0 <= 0) goto .L3 (which returns 0)
 	subs r4, r0, #0
-	cmp r0, #0
 	ble .L3
 
 	@ Compare R4 wtih 1
