@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	clock_t end = clock();
 
 	// calculate elapsed time
-	double elapsed_time = (double)(end - start);
+	double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC;
 	fprintf(fptr, "%d\t%f\n", number, elapsed_time);
 	fclose(fptr);
 
