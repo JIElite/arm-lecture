@@ -1,0 +1,13 @@
+set grid
+
+set title "Fibonacci Performance"
+set ylabel "time(sec)"
+set xlabel "n"
+
+set term png
+set output "fib.png"
+
+plot 'fib_fast_doubling.txt' smooth csplines,\
+	 'fib_i.txt' smooth csplines,\
+	 'fib_recur.txt' smooth csplines
+
