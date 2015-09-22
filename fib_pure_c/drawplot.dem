@@ -1,5 +1,7 @@
 set grid
 
+set style line 3 pt 7 ps 0.5 pi 10 
+
 set title "Fibonacci Performance"
 set ylabel "time(sec)"
 set xlabel "n"
@@ -9,5 +11,5 @@ set output "fib.png"
 
 plot 'fib_fast_doubling.txt' smooth csplines,\
 	 'fib_i.txt' smooth csplines,\
-	 'fib_recur.txt' smooth csplines
+	 'fib_recur.txt' smooth csplines with linespoints ls 3
 
