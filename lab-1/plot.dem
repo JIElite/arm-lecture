@@ -1,0 +1,9 @@
+set grid
+set title "Fibonacci Recursive O(n^2)"
+set ylabel "time(sec)"
+set xlabel "input number"
+
+set term png
+set output "fib_rec.png"
+
+plot 'fib.txt' smooth csplines
