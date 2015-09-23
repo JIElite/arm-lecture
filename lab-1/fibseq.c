@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-extern int fibonacci(int x);
+extern int fibonacci(int n, int x, int y);
 
 int main(int argc, char **argv)
 {
@@ -11,7 +11,7 @@ int main(int argc, char **argv)
   scanf("%d",&number);
   
   	clock_t start = clock();
-  	result = fibonacci(number);
+  	result = fibonacci(number, 0, 1);
 	clock_t end = clock();
 	
 	FILE *fptr = fopen("fib.txt", "a");
