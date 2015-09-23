@@ -30,15 +30,16 @@ int main(){
 		int i;
 
 		for ( i = 0; i < 47; i++){
-			
-			clock_t start = clock();
+			struct timespec t1, t2;
+				
+			clock_gettime(CLOCK_REALTIME, &t1);
 			int result = fibonacci(i);
-			clock_t end = clock();
+			clock_gettime(CLOCK_REALTIME, &t2);
 			
-			double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC;
+			long elapsed_time = t2.tv_nsec - t1.tv_nsec;
 			FILE *fptr = fopen("fib_fast_doubling.txt", "a");
 			if (fptr != NULL){
-				fprintf(fptr, "%d\t%f\n", i, elapsed_time); 	
+				fprintf(fptr, "%d\t%ld\n", i, elapsed_time); 	
 				fclose(fptr);
  			}
 		}

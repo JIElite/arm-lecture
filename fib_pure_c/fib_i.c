@@ -25,20 +25,20 @@ int main(){
 		int i;
 
 		for ( i = 0; i < 47; i++){
+			struct timespec t1, t2;
 			
-			clock_t start = clock();
+			clock_gettime(CLOCK_REALTIME, &t1);
 			int result = fibonacci(i);
-			clock_t end = clock();
+			clock_gettime(CLOCK_REALTIME, &t2);
 			
-			double elapsed_time = (double)(end - start);
+			long elapsed_time = t2.tv_nsec - t1.tv_nsec;
 			FILE *fptr = fopen("fib_i.txt", "a");
-			fprintf(stdout, "%d\t%f\t%d\n", i, elapsed_time, fibonacci(i)); 	
-			/*
+			
+			//fprintf(fptr, "%d\t%ld\t%d\n", i, elapsed_time, fibonacci(i)); 	
 			if (fptr != NULL){
-				fprintf(fptr, "%d\t%f\n", i, elapsed_time); 	
+				fprintf(fptr, "%d\t%ld\n", i, elapsed_time); 	
 				fclose(fptr);
  			}
-			*/
 		}
 	
 		return 0;

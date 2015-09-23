@@ -1,14 +1,14 @@
 #include<stdio.h>
 #include<time.h>
 
-int fibonacci(int number){
-	int a = 0;
-	int b = 1;
-	
-	if (number == 0) return 0;
-	if (number == 1) return 1;
 
-	return fibonacci(number-1) + fibonacci(number-2);
+int fib(int n, int x, int y){
+	
+	if (0 == n) return 0;
+	if (1 == n) return 1;
+
+	return fib(n-1, y, x+y);
+
 }
 
 int main(){
@@ -17,14 +17,16 @@ int main(){
 
 		for ( i = 0; i < 47; i++){
 			
-			clock_t start = clock();
-			int result = fibonacci(i);
-			clock_t end = clock();
-			
-			double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC;
+			struct timespec t1, t2;
+			clock_gettime(CLOCK_REALTIME, &t1);
+			int result = fib(i, 0, 1);
+			clock_gettime(CLOCK_REALTIME, &t2);
+
+			long elapsed_time = t2.tv_nsec - t1.tv_nsec;
+	
 			FILE *fptr = fopen("fib_recur.txt", "a");
 			if (fptr != NULL){
-				fprintf(fptr, "%d\t%f\n", i, elapsed_time); 	
+				fprintf(fptr, "%d\t%ld\n", i, elapsed_time); 	
 				fclose(fptr);
  			}
 		}
