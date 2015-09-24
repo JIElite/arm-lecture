@@ -4,8 +4,8 @@
 
 int fib(int n, int x, int y){
 	
-	if (0 == n) return 0;
-	if (1 == n) return 1;
+	if (0 == n) return x;
+	if (1 == n) return y;
 
 	return fib(n-1, y, x+y);
 
